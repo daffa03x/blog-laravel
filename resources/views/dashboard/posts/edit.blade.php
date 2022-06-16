@@ -10,7 +10,7 @@
         <form method="POST" class="mb-4" action="/dashboard/posts/{{ $post->slug }}" enctype="multipart/form-data">
           @method('put')
             @csrf
-            <div class="mb-3">
+            <div class="form-group">
               <label for="title" class="form-label">Title</label>
               <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" required autofocus value="{{ old('title',$post->title) }}">
               @error('title')
@@ -19,7 +19,7 @@
               </div>
               @enderror
             </div>
-            <div class="mb-3">
+            <div class="form-group">
               <label for="slug" class="form-label">Slug</label>
               <input type="text" class="form-control  @error('title') is-invalid @enderror" id="slug" name="slug" required value="{{ old('slug',$post->slug) }}">
               @error('slug')
@@ -28,9 +28,9 @@
               </div>
               @enderror
             </div>
-            <div class="mb-3">
+            <div class="form-group">
                 <label for="category" class="form-label">Category</label>
-                <select class="form-select text-center" name="category_id">
+                <select class="form-control text-center" name="category_id">
                     @foreach($categories as $category)
                     @if(old('category_id',$post->category_id) == $category->id)
                     <option value="{{ $category->id }}" selected>{{ $category->name }}</option>   
@@ -41,7 +41,7 @@
                   </select>
             </div>
             
-            <div class="mb-3">
+            <div class="form-group">
               <label for="image" class="form-label">Post Image</label>
               <input type="hidden" name="oldImage" value="{{ $post->image }}">
               @if ($post->image)
@@ -49,7 +49,7 @@
               @else
               <img class="img-preview img-fluid mb-3 col-sm-5">
               @endif
-              <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
+              <input class="form-control-file @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
               @error('image')
               <div class="invalid-feedback">
                   {{ $message }}

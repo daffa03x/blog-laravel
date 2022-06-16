@@ -5,12 +5,12 @@
     <div class="row justify-content-center my-3">
         <div class="col-lg-12">
             <div class="h2 my-2">{{ $post->title }}</div>
-            <a class="badge bg-dark me-2" href="/dashboard/posts"><span data-feather="arrow-left" class="align-text-bottom"></span></a>
-            <a class="badge bg-info me-2" href="/dashboard/posts/{{ $post->slug }}/edit"><span data-feather="edit" class="align-text-bottom"></span></a>
+            <a class="btn btn-dark me-2" href="/dashboard/posts"><i class="fas fa-arrow-alt-circle-left"></i></a>
+            <a class="btn btn-info me-2" href="/dashboard/posts/{{ $post->slug }}/edit"><i class="fas fa-edit"></i></a>
             <form action="/dashboard/posts/{{ $post->slug }}" class="d-inline" method="POST">
                 @method('delete')
                 @csrf
-                <button class="badge bg-danger me-2 border-0" onclick="return confirm('Hapus Data ?')"><span data-feather="trash" class="align-text-bottom"></span></button>
+                <button class="btn btn-danger me-2 border-0" onclick="return confirm('Hapus Data ?')"><i class="fas fa-trash-alt"></i></button>
               </form>
 
               @if ($post->image)
